@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native';
 import { Pressable } from 'react-native';
 import { Formulario } from './src/components/Formulario';
@@ -19,6 +19,8 @@ const App = () => {
         Citas {'\n'}
         <Text style={styles.Subtitle}>IMSS</Text>
       </Text>
+
+      <Image style={styles.imglogo} source={require('./src/img/imss-logo.png')}></Image>
 
       <View style={styles.Botones}>
         <Pressable style={styles.boton1} onPress={() => setVM(true)}>
@@ -40,6 +42,11 @@ const App = () => {
 }
 
 const styles = StyleSheet.create({
+  imglogo: {
+    width: 200,
+    height: 200,
+  },
+
   centro: {
     textAlign: 'center',
     fontSize: 20,
@@ -73,7 +80,6 @@ const styles = StyleSheet.create({
   Title: {
     fontSize: 50,
     textAlign: 'center',
-    margin: 30,
   },
 
   Subtitle: {
