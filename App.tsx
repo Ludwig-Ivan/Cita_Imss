@@ -6,6 +6,7 @@ const App = () => {
     <View>
       <SafeAreaView>
         <Text>Hola, Se mi amigo porfis</Text>
+        <Text> Esta bien </Text>
       </SafeAreaView>
     </View>
   )
