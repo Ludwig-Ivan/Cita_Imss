@@ -2,55 +2,38 @@ import React, { useState } from 'react'
 import { Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import DatePicker from 'react-native-date-picker';
 
-export const Formulario = (prop: { vm: boolean, setVM: () => void }) => {
+export const Ingresar = (prop: { vi: boolean, setVI: () => void }) => {
   const [pac, setPac] = useState('');
   const [pro, setPro] = useState('');
-  const [email, setEmail] = useState('');
-  const [fec, setFec] = useState(new Date());
-  const [sin, setSin] = useState('');
 
   return (
-    <Modal animationType='slide' visible={prop.vm}>
+    <Modal animationType='slide' visible={prop.vi} >
       <ScrollView>
         <SafeAreaView style={styles.contenido}>
-          <Text style={styles.Titulo}>Nueva {' '}
-            <Text style={styles.TituloBold}>Cita</Text>
+          <Text style={styles.Titulo}>Ingresa a{' '}
+            <Text style={styles.TituloBold}>Citas</Text>
           </Text>
 
           <View style={styles.Form}>
-            <Pressable style={styles.boton2} onLongPress={prop.setVM}>
+            <Pressable style={styles.boton2} onLongPress={prop.setVI}>
               <Text style={styles.centro}>
-                Cancelar
+                Salir
               </Text>
             </Pressable>
-            <View>
-              <Text style={styles.label1}> Nombre del Paciente: </Text>
-              <TextInput style={styles.input} placeholder='Nombre del Paciente' placeholderTextColor={'#666'} onChangeText={setPac} value={pac} />
-            </View>
             <View>
               <Text style={styles.label1}> Nombre del Propietario: </Text>
               <TextInput style={styles.input} placeholder='Nombre Propietario' placeholderTextColor={'#666'} onChangeText={setPro} value={pro} />
             </View>
             <View>
-              <Text style={styles.label1}> Email Propietario: </Text>
-              <TextInput style={styles.input} keyboardType='email-address' placeholder='Email Propietario' placeholderTextColor={'#666'} onChangeText={setEmail} value={email} />
+              <Text style={styles.label1}> Paciente: </Text>
+              <TextInput style={styles.input} placeholder='Nombre paciente' placeholderTextColor={'#666'} onChangeText={setPac} value={pac} />
             </View>
-            <View>
-              <Text style={styles.label1}> Fecha Alta </Text>
-              <DatePicker style={styles.picker} mode='date' androidVariant='nativeAndroid' date={fec} locale='es' onDateChange={() => { }} />
-            </View>
-            <View>
-              <Text style={styles.label1}> Sintomas: </Text>
-              <TextInput style={styles.input} placeholder='Sintomas' placeholderTextColor={'#666'} multiline numberOfLines={4} onChangeText={setSin} value={sin} />
-            </View>
-          </View>
-
-          <Pressable style={styles.boton1} onLongPress={() => console.log('eso')}>
+            <Pressable style={styles.boton1} onLongPress={() => {}}>
             <Text style={styles.centro}>
-              Registrar
+              Consultar
             </Text>
           </Pressable>
-
+          </View>
         </SafeAreaView>
       </ScrollView>
     </Modal>
@@ -65,9 +48,10 @@ const styles = StyleSheet.create({
   contenido: {
     backgroundColor: '#FBFADA',
     display: "flex",
-    flexGrow: 1,
+    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    height: 615,
   },
 
   Form: {
@@ -75,7 +59,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    height: 800,
+    height: '80%',
   },
 
   label1: {
@@ -94,7 +78,6 @@ const styles = StyleSheet.create({
   boton2: {
     backgroundColor: '#436850',
     padding: 10,
-    margin: 5,
     borderRadius: 10,
     width: 200,
   },
@@ -102,6 +85,8 @@ const styles = StyleSheet.create({
   centro: {
     textAlign: 'center',
     fontSize: 20,
+    color: '#FFF',
+    fontWeight: '900',
   },
 
   input: {

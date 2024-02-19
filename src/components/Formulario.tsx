@@ -102,6 +102,8 @@ const styles = StyleSheet.create({
   centro: {
     textAlign: 'center',
     fontSize: 20,
+    color: '#FFF',
+    fontWeight: '900',
   },
 
   input: {
