@@ -50,10 +50,12 @@ const styles = StyleSheet.create({
   centro: {
     textAlign: 'center',
     fontSize: 20,
+    color: '#FFF',
+    fontWeight: '900',
   },
 
   boton1: {
-    backgroundColor: 'red',
+    backgroundColor: '#436850',
     padding: 10,
     marginBottom: 5,
     borderRadius: 10,
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
   },
 
   boton2: {
-    backgroundColor: 'green',
+    backgroundColor: '#436850',
     padding: 10,
     marginBottom: 5,
     borderRadius: 10,
@@ -74,12 +76,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: 'space-around',
-    backgroundColor: '#E3E1D9',
+    backgroundColor: '#FBFADA',
   },
 
   Title: {
     fontSize: 50,
     textAlign: 'center',
+    color: '#12372A',
   },
 
   Subtitle: {
