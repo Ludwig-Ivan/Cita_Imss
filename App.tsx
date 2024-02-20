@@ -3,13 +3,19 @@ import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native';
 import { Pressable } from 'react-native';
 import { Formulario } from './src/components/Formulario';
+import { Ingresar } from './src/components/Ingresar';
 
 const App = () => {
 
   const [vm, setVM] = useState(false);
+  const [vi, setVI] = useState(false);
 
   const regreso = () => {
     setVM(false);
+  }
+
+  const atras = () => {
+    setVI(false);
   }
 
   return (
@@ -29,14 +35,15 @@ const App = () => {
           </Text>
         </Pressable>
 
-        <Pressable style={styles.boton2} onPress={() => { }}>
+        <Pressable style={styles.boton2} onPress={() => setVI(true)}>
           <Text style={styles.centro}>
-            Ingresa
+            Consulta
           </Text>
         </Pressable>
       </View>
 
       <Formulario vm={vm} setVM={regreso} />
+      <Ingresar vi={vi} setVI={atras}/>
     </SafeAreaView>
   )
 }
