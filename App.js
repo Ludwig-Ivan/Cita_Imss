@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
-import { Text } from 'react-native';
-import { Pressable } from 'react-native';
+import { Image, SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 import { Formulario } from './src/components/Formulario';
-import { Ingresar } from './src/components/Ingresar';
+import { Consulta } from './src/components/Ingresar';
 
 const App = () => {
 
@@ -43,7 +41,7 @@ const App = () => {
       </View>
 
       <Formulario vm={vm} setVM={regreso} />
-      <Ingresar vi={vi} setVI={atras}/>
+      <Consulta vi={vi} setVI={atras} />
     </SafeAreaView>
   )
 }

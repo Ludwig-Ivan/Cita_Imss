@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import DatePicker from 'react-native-date-picker';
 
-export const Formulario = (prop: { vm: boolean, setVM: () => void }) => {
+export const Formulario = (prop) => {
   const [pac, setPac] = useState('');
   const [pro, setPro] = useState('');
   const [email, setEmail] = useState('');

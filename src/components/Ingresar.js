@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
-import DatePicker from 'react-native-date-picker';
+import { FlatList, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import Lista from './Lista';
 
-export const Ingresar = (prop: { vi: boolean, setVI: () => void }) => {
+export const Consulta = (prop) => {
   const [pac, setPac] = useState('');
   const [pro, setPro] = useState('');
 
@@ -10,7 +10,7 @@ export const Ingresar = (prop: { vi: boolean, setVI: () => void }) => {
     <Modal animationType='slide' visible={prop.vi} >
       <ScrollView>
         <SafeAreaView style={styles.contenido}>
-          <Text style={styles.Titulo}>Ingresa a{' '}
+          <Text style={styles.Titulo}>Consulta{' '}
             <Text style={styles.TituloBold}>Citas</Text>
           </Text>
 
@@ -20,14 +20,7 @@ export const Ingresar = (prop: { vi: boolean, setVI: () => void }) => {
                 Salir
               </Text>
             </Pressable>
-            <View>
-              <Text style={styles.label1}> Nombre del Propietario: </Text>
-              <TextInput style={styles.input} placeholder='Nombre Propietario' placeholderTextColor={'#666'} onChangeText={setPro} value={pro} />
-            </View>
-            <View>
-              <Text style={styles.label1}> Paciente: </Text>
-              <TextInput style={styles.input} placeholder='Nombre paciente' placeholderTextColor={'#666'} onChangeText={setPac} value={pac} />
-            </View>
+            <Lista paciente={''}/>
             <Pressable style={styles.boton1} onLongPress={() => {}}>
             <Text style={styles.centro}>
               Consultar
