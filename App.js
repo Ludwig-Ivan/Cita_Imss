@@ -6,15 +6,8 @@ import { Consulta } from './src/components/Ingresar';
 const App = () => {
 
   const [vm, setVM] = useState(false);
-  const [vi, setVI] = useState(false);
-
-  const regreso = () => {
-    setVM(false);
-  }
-
-  const atras = () => {
-    setVI(false);
-  }
+  const [vc, setVC] = useState(false);
+  const [listpac, setListPac] = useState([]);
 
   return (
     <SafeAreaView style={styles.Centro}>
@@ -33,15 +26,15 @@ const App = () => {
           </Text>
         </Pressable>
 
-        <Pressable style={styles.boton2} onPress={() => setVI(true)}>
+        <Pressable style={styles.boton2} onPress={() => setVC(true)}>
           <Text style={styles.centro}>
             Consulta
           </Text>
         </Pressable>
       </View>
 
-      <Formulario vm={vm} setVM={regreso} />
-      <Consulta vi={vi} setVI={atras} />
+      <Formulario vm={vm} setVM={() => { setVM(false) }} listpac={listpac} setListPac={setListPac} />
+      <Consulta vc={vc} setVC={() => { setVC(false) }} listpac={listpac} />
     </SafeAreaView>
   )
 }

@@ -1,41 +1,55 @@
-import React, { useState } from 'react'
-import { FlatList, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
-import Lista from './Lista';
+import React from 'react'
+import { Modal, Pressable, SafeAreaView, StyleSheet, Text, View, FlatList } from 'react-native'
+import Item from './Lista';
 
-export const Consulta = (prop) => {
-  const [pac, setPac] = useState('');
-  const [pro, setPro] = useState('');
+export const Consulta = (props) => {
+
+  const { vc, setVC, listpac } = props
 
   return (
-    <Modal animationType='slide' visible={prop.vi} >
-      <ScrollView>
-        <SafeAreaView style={styles.contenido}>
-          <Text style={styles.Titulo}>Consulta{' '}
-            <Text style={styles.TituloBold}>Citas</Text>
-          </Text>
+    <Modal animationType='slide' visible={vc} >
+      <SafeAreaView style={styles.contenido}>
+        <Text style={styles.Titulo}>Consulta{' '}
+          <Text style={styles.TituloBold}>Citas</Text>
+        </Text>
 
-          <View style={styles.Form}>
-            <Pressable style={styles.boton2} onLongPress={prop.setVI}>
-              <Text style={styles.centro}>
-                Salir
-              </Text>
-            </Pressable>
-            <Lista paciente={''}/>
-            <Pressable style={styles.boton1} onLongPress={() => {}}>
+        <View style={styles.Form}>
+          <Pressable style={styles.boton1} onLongPress={setVC}>
+            <Text style={styles.centro}>
+              Salir
+            </Text>
+          </Pressable>
+
+          <FlatList style={styles.lista} data={listpac} renderItem={({ item }) => {
+            return (
+              <Item item={item} />
+            )
+          }}
+          />
+
+          <Pressable style={styles.boton1} onLongPress={() => { }}>
             <Text style={styles.centro}>
               Consultar
             </Text>
           </Pressable>
-          </View>
-        </SafeAreaView>
-      </ScrollView>
+        </View>
+      </SafeAreaView>
     </Modal>
   )
 }
 
 const styles = StyleSheet.create({
-  picker: {
-    marginTop: 20,
+
+  lista: {
+    height: 350,
+    width: 250,
+    backgroundColor: '#FFFF',
+  },
+
+  item: {
+    backgroundColor: '#FFA',
+    height: 50,
+    width: 240,
   },
 
   contenido: {
@@ -43,8 +57,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    height: 615,
   },
 
   Form: {
@@ -52,25 +66,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    height: '80%',
-  },
-
-  label1: {
-    fontSize: 20,
-    paddingBottom: 3,
   },
 
   boton1: {
     backgroundColor: '#436850',
     padding: 10,
-    marginBottom: 30,
-    borderRadius: 10,
-    width: 200,
-  },
-
-  boton2: {
-    backgroundColor: '#436850',
-    padding: 10,
+    margin: 20,
     borderRadius: 10,
     width: 200,
   },
@@ -80,17 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: '900',
-  },
-
-  input: {
-    backgroundColor: '#FFF',
-    fontSize: 15,
-    borderRadius: 5,
-    paddingVertical: 8,
-    width: 280,
-    textAlign: 'center',
-    borderColor: '#436850DD',
-    borderWidth: 2,
   },
 
   Titulo: {

@@ -1,21 +1,24 @@
 import React from 'react'
-import { FlatList, Text } from 'react-native'
+import {StyleSheet, Text, View } from 'react-native'
 
-const Lista = () => {
-    const { pacientes } = props
+export default Item = ({item}) => {
+    const { id, paciente, propietario, email, fecha, sintomas } = item
+
     return (
-        <Text>
-            <FlatList
-                data={pacientes}
-                keyExtractor={(item) => item.id}
-                renderItem={({item})=>{
-                    <Text>Hola</Text>
-                }}>
-                
-
-            </FlatList>
-        </Text >
+        <View style={style.item} >
+            <Text>
+                {paciente+' '+propietario}
+            </Text>
+        </View>
     )
 }
 
-export default Lista
+const style = StyleSheet.create(
+    {
+        item: {
+            backgroundColor: '#FFA',
+            height: 50,
+            width: 240,
+        }
+    }
+)

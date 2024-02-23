@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
-import { Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View, Alert } from 'react-native'
 import DatePicker from 'react-native-date-picker';
 
-export const Formulario = (prop) => {
+export const Formulario = (props) => {
+
+  const { vm, setVM, listpac, setListPac } = props
   const [pac, setPac] = useState('');
   const [pro, setPro] = useState('');
   const [email, setEmail] = useState('');
   const [fec, setFec] = useState(new Date());
   const [sin, setSin] = useState('');
 
+  const Paciente = {
+    id: new Date(),
+    paciente: pac,
+    propietario: pro,
+    email: email,
+    fecha: fec,
+    sintomas: sin,
+  };
+
   return (
-    <Modal animationType='slide' visible={prop.vm}>
+    <Modal animationType='slide' visible={vm}>
       <ScrollView>
         <SafeAreaView style={styles.contenido}>
           <Text style={styles.Titulo}>Nueva {' '}
@@ -18,7 +29,7 @@ export const Formulario = (prop) => {
           </Text>
 
           <View style={styles.Form}>
-            <Pressable style={styles.boton2} onLongPress={prop.setVM}>
+            <Pressable style={styles.boton2} onLongPress={setVM}>
               <Text style={styles.centro}>
                 Cancelar
               </Text>
@@ -45,7 +56,13 @@ export const Formulario = (prop) => {
             </View>
           </View>
 
-          <Pressable style={styles.boton1} onLongPress={() => console.log('eso')}>
+          <Pressable style={styles.boton1} onLongPress={() => {
+            setListPac([...listpac, Paciente]);
+            Alert.alert(
+              '',
+              'CITA REGISTRADA'
+            )
+          }}>
             <Text style={styles.centro}>
               Registrar
             </Text>
