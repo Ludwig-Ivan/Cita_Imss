@@ -20,6 +20,15 @@ export const Formulario = (props) => {
     sintomas: sin,
   };
 
+  const Vaciar = () => {
+    setPac('')
+    setPro('')
+    setEmail('')
+    setFec(new Date)
+    setSin('')
+    setVM()
+  };
+
   return (
     <Modal animationType='slide' visible={vm}>
       <ScrollView>
@@ -29,7 +38,7 @@ export const Formulario = (props) => {
           </Text>
 
           <View style={styles.Form}>
-            <Pressable style={styles.boton2} onLongPress={setVM}>
+            <Pressable style={styles.boton2} onPress={setVM}>
               <Text style={styles.centro}>
                 Cancelar
               </Text>
@@ -48,7 +57,7 @@ export const Formulario = (props) => {
             </View>
             <View>
               <Text style={styles.label1}> Fecha Alta </Text>
-              <DatePicker style={styles.picker} mode='date' androidVariant='nativeAndroid' date={fec} locale='es' onDateChange={() => { }} />
+              <DatePicker style={styles.picker} mode='date' androidVariant='nativeAndroid' date={fec} locale='es' onDateChange={setFec} />
             </View>
             <View>
               <Text style={styles.label1}> Sintomas: </Text>
@@ -56,12 +65,20 @@ export const Formulario = (props) => {
             </View>
           </View>
 
-          <Pressable style={styles.boton1} onLongPress={() => {
+          <Pressable style={styles.boton1} onPress={() => {
+            if (pac, pro, email, sin == '') {
+              Alert.alert(
+                '',
+                'No dejes campos vacios...'
+              )
+              return
+            }
             setListPac([...listpac, Paciente]);
             Alert.alert(
               '',
               'CITA REGISTRADA'
             )
+            Vaciar()
           }}>
             <Text style={styles.centro}>
               Registrar

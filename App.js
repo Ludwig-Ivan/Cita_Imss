@@ -34,7 +34,7 @@ const App = () => {
       </View>
 
       <Formulario vm={vm} setVM={() => { setVM(false) }} listpac={listpac} setListPac={setListPac} />
-      <Consulta vc={vc} setVC={() => { setVC(false) }} listpac={listpac} />
+      <Consulta vc={vc} setVC={() => { setVC(false) }} listpac={listpac} setListPac={setListPac} />
     </SafeAreaView>
   )
 }

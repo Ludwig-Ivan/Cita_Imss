@@ -1,10 +1,11 @@
 import React from 'react'
 import { Modal, Pressable, SafeAreaView, StyleSheet, Text, View, FlatList } from 'react-native'
 import Item from './Lista';
+import { Formulario } from './Formulario';
 
 export const Consulta = (props) => {
 
-  const { vc, setVC, listpac } = props
+  const { vc, setVC, listpac, setListPac } = props
 
   return (
     <Modal animationType='slide' visible={vc} >
@@ -14,7 +15,7 @@ export const Consulta = (props) => {
         </Text>
 
         <View style={styles.Form}>
-          <Pressable style={styles.boton1} onLongPress={setVC}>
+          <Pressable style={styles.boton1} onPress={setVC}>
             <Text style={styles.centro}>
               Salir
             </Text>
@@ -22,12 +23,12 @@ export const Consulta = (props) => {
 
           <FlatList style={styles.lista} data={listpac} renderItem={({ item }) => {
             return (
-              <Item item={item} />
+              <Item item={item} listpac={listpac} setListPac={setListPac} />
             )
           }}
           />
 
-          <Pressable style={styles.boton1} onLongPress={() => { }}>
+          <Pressable style={styles.boton1} onPress={() => { }}>
             <Text style={styles.centro}>
               Consultar
             </Text>
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
 
   lista: {
     height: 350,
-    width: 250,
-    backgroundColor: '#FFFF',
+    width: '100%',
+    backgroundColor: '#FBFADA',
   },
 
   item: {
