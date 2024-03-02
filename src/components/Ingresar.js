@@ -1,7 +1,6 @@
 import React from 'react'
 import { Modal, Pressable, SafeAreaView, StyleSheet, Text, View, FlatList } from 'react-native'
 import Item from './Lista';
-import { Formulario } from './Formulario';
 
 export const Consulta = (props) => {
 

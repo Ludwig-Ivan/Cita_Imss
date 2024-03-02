@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Pressable } from 'react-native'
-import { Formulario } from './Formulario'
+import { Editar } from './Editar'
 
 export default Item = (props) => {
     const { item, listpac, setListPac } = props
     const { id, paciente, propietario, email, fecha, sintomas } = item
     const [vm, setVM] = useState(false)
 
-    const Editar = () => {
-        const listpac2 = listpac.splice(listpac.indexOf(item), 1);
+    Borrar = () => {
+        listpac.splice(listpac.indexOf(item), 1)
         setListPac([...listpac]);
-    };
+    }
 
-    const Borrar = () => {
-        const listpac2 = listpac.splice(listpac.indexOf(item), 1);
-        setListPac([...listpac]);
-    };
+    const formatearFecha = (fecha) => {
+        const nuevaFecha = new Date(fecha)
+        const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+        return nuevaFecha.toLocaleDateString('es-ES', opciones)
+    }
 
     return (
         <View style={style.item} >
@@ -23,13 +24,13 @@ export default Item = (props) => {
                 {paciente + ' ' + propietario}
             </Text>
             <Text style={style.email_fec}>
-                {email + ' ' + fecha}
+                {email + ' ' + formatearFecha(fecha)}
             </Text>
             <Text>
                 {sintomas}
             </Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                <Pressable style={style.boton2} onPress={Editar}>
+                <Pressable style={style.boton2} onPress={() => { setVM(true) }}>
                     <Text style={style.centro}>
                         Editar
                     </Text>
@@ -40,6 +41,7 @@ export default Item = (props) => {
                     </Text>
                 </Pressable>
             </View>
+            <Editar vm={vm} setVM={() => { setVM(false) }} listpac={listpac} setListPac={setListPac} item={item} />
         </View>
     )
 }
