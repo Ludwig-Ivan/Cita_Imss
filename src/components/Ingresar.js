@@ -12,24 +12,14 @@ export const Consulta = (props) => {
         <Text style={styles.Titulo}>Consulta{' '}
           <Text style={styles.TituloBold}>Citas</Text>
         </Text>
-
         <View style={styles.Form}>
+          <FlatList style={styles.lista} data={listpac} renderItem={
+            ({ item }) => {
+              return (<Item item={item} listpac={listpac} setListPac={setListPac} />)
+            }} />
           <Pressable style={styles.boton1} onPress={setVC}>
             <Text style={styles.centro}>
               Salir
-            </Text>
-          </Pressable>
-
-          <FlatList style={styles.lista} data={listpac} renderItem={({ item }) => {
-            return (
-              <Item item={item} listpac={listpac} setListPac={setListPac} />
-            )
-          }}
-          />
-
-          <Pressable style={styles.boton1} onPress={() => { }}>
-            <Text style={styles.centro}>
-              Consultar
             </Text>
           </Pressable>
         </View>
